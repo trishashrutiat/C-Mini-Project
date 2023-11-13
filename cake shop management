@@ -1,0 +1,472 @@
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+using namespace std;
+class cake
+    {
+        protected:
+            int price;
+            int shape; string s;
+            int wt; string w;
+            int flav; string f;
+            int type; string t;
+        public:
+        static int totalcakes;
+        static void display();
+        friend ostream & operator << (ostream& cout, cake &c)
+       {
+        cout<<"***************************THANK YOU BYE***********************************"<<endl;
+        return cout;
+       }
+        friend istream & operator >> (istream& cin , cake &c)
+        {
+            cout<<"Press 1 for circle"<<endl;
+            cout<<"Press 2 for rectangle"<<endl;
+            cout<<"Press 3 for heart"<<endl;
+            cin>>c.shape;
+            cout<<"Press 1 for half kg"<<endl;
+            cout<<"Press 2 for one kg "<<endl;
+            cout<<"Press 3 for two kg"<<endl;
+            cin>>c.wt;
+            cout<<"Press 1 for Butterscotch"<<endl;
+            cout<<"Press 2 for Chocolate"<<endl;
+            cout<<"Press 3 for  Vanilla"<<endl;
+            cin>>c.flav;
+            cout<<"Press 1 for egg"<<endl;
+            cout<<"Press 2 for eggless"<<endl;
+            cout<<"Press 3 for vegan"<<endl;
+            cin>>c.type;
+            return cin;
+         }
+        cake()
+            {
+                price=300;
+                shape=1;
+                wt=1;
+                flav=1;
+                type=1;
+                totalcakes++;
+            }
+           void cake::price_shape()
+            {
+                if(shape==1)
+                    price=100;
+                if(shape==2)
+                    price=120;
+                if(shape==3)
+                    price=110;
+
+            }
+            void price_weight()
+            {
+                if(wt==1)
+                    price=price+250;
+                if(wt==2)
+                    price=price+220;
+                if(wt==3)
+                    price=price+210;
+            }
+            void price_flavour()
+            {
+                if(flav==1)
+                    price=price+150;
+                if(flav==2)
+                    price=price+170;
+                if(flav==3)
+                    price=price+210;
+            }
+            void price_type()
+            {
+                if(type==1)
+                    price=price+150;
+                if(type==2)
+                    price=price+120;
+                if(type==3)
+                    price=price+110;
+            }
+            void price_input()
+            {
+                this->price_weight();
+                this->price_flavour();
+                this->price_type();
+                this->price_shape();
+            } void price_shape()
+            {
+                if(shape==1)
+                    price=100;
+                if(shape==2)
+                    price=120;
+                if(shape==3)
+                    price=110;
+
+            }
+            void price_weight()
+            {
+                if(wt==1)
+                    price=price+250;
+                if(wt==2)
+                    price=price+220;
+                if(wt==3)
+                    price=price+210;
+            }
+            void price_flavour()
+            {
+                if(flav==1)
+                    price=price+150;
+                if(flav==2)
+                    price=price+170;
+                if(flav==3)
+                    price=price+210;
+            }
+            void price_type()
+            {
+                if(type==1)
+                    price=price+150;
+                if(type==2)
+                    price=price+120;
+                if(type==3)
+                    price=price+110;
+            }
+            void price_input()
+            {
+                this->price_weight();
+                this->price_flavour();
+                this->price_type();
+                this->price_shape();
+            }void put_output()
+            {
+                s=(this->shape==1) ? "circle" :(this->shape==2) ? "rectangle" : "heart";
+                cout<<"Shape   :"<<s <<endl;
+                w=(this->wt==1) ? "one kg" :(this->wt==2) ? "two kg" : "three kg";
+                cout<<"Weight  :"<<w <<endl;
+                f=(this->flav==1) ? "Butterscotch" :(this->flav==2) ? "chocolate" : "vanilla";
+                cout<<"Flavour :"<<f<<endl;
+                t=(this->type==1) ? "egg" :(this->type==2) ? "eggless" : "vegan";
+                cout<<"Type    :"<<t<<endl;
+            }
+            virtual void get_coupon()
+            {
+                cout<<"cake"<<endl;
+            }
+    };
+
+int cake::totalcakes = 0;
+
+    class birthday : public cake
+    {
+        protected:
+            int layer_b; string lb;
+            int top_b; string tb;
+            char msg_b[20];
+        public:
+            void getlayer()
+            {
+                cout<<"Enter the number of layers "<<endl;
+                cout<<"Press 1 for 1 layer "<<endl;
+                cout<<"Press 2 for 2 layer"<<endl;
+                std::cin>>layer_b;
+                if(layer_b==1)
+                    price=price+100;
+                if(layer_b==2)
+                     price=price+200;
+            }
+            void get_toppings()
+            {
+                cout<<"Enter the toppings "<<endl;
+                cout<<"Press 1 for chocolate "<<endl;
+                cout<<"Press 2 for Fresh fruits"<<endl;
+                cout<<"Press 3 for Crush"<<endl;
+                std::cin>>top_b;
+                if(top_b==1)
+                    price=price+20;
+                if(top_b==2)
+                    price=price+20;
+                if(top_b==3)
+                    price=price+10;
+
+            }
+            void get_msg()
+            {
+                cout<<"Enter message to be displayed on cake"<<endl;
+                std::cin>>msg_b;
+                cout<<"**********************************************************************"<<endl;
+              }
+            void get_coupon()
+            {
+                cout<<"you get 20% offer on ypur next purchase "<<endl;
+                cout<<"your code is "<<rand() <<endl;
+                cout<<"***********************************************************************"<<endl;
+            }
+            void get_birthday()
+            {
+                price_input();
+                this->get_toppings();
+                this->getlayer();
+                this->get_msg();
+                cout<<"*******************************BILL*******************************"<<endl;
+                cout<<"******************************************************************"<<endl;
+                cout<<"Price    "<<"RS"<<price<<endl;
+            }
+            void put_output_b()
+            {
+                put_output();
+                lb=(this->layer_b==1) ? "one" :"two";
+                cout<<"Layers   :"<<lb <<endl;
+                tb=(this->top_b==1) ? "chocolate" :(this->top_b==2) ? "fresh fruits" : "crush";
+                cout<<"Toppings :"<<tb <<endl;
+            }
+    };
+    class anniversary : public cake
+    {
+        protected:
+            int layer_a; string lb1;
+            int top_a; string tb1;
+            char msg_a[20];
+        public:
+            void getlayer_a()
+            {
+                cout<<"Enter the number of layers "<<endl;
+                cout<<"Press 1 for 1 layer "<<endl;
+                cout<<"Press 2 for 2 layer"<<endl;
+                std::cin>>layer_a;
+                if(layer_a==1)
+                    price=price+100;
+                if(layer_a==2)
+                     price=price+200;
+            }
+            void get_toppings_a()
+            {
+                cout<<"Enter the toppings "<<endl;
+                cout<<"Press 1 for chocolate "<<endl;
+                cout<<"Press 2 for Fresh fruits"<<endl;
+                cout<<"Press 3 for Crush"<<endl;
+                std::cin>>top_a;
+                if(top_a==1)
+                    price=price+20;
+                if(top_a==2)
+                    price=price+20;
+                if(top_a==3)
+                    price=price+10;
+            }
+            void get_msg_a()
+            {
+                cout<<"Enter message to be displayed on cake "<<endl;
+                std::cin>>msg_a;
+            }
+            void get_coupon()
+            {
+                cout<<"You get 20% offer on your next purchase "<<endl;
+                cout<<"Your code is "<<rand()<<endl;
+                cout<<"***********************************************************************"<<endl;
+
+            }  void get_anniversary()
+            {
+                price_input();
+                this->get_toppings_a();
+                this->get_msg_a();
+                this->getlayer_a();
+                cout<<"*********************************BILL*********************************"<<endl;
+                cout<<"**********************************************************************"<<endl;
+                cout<<"Price    "<<"RS"<<price<<endl;
+            }
+            void put_output_a()
+            {
+                lb1=(this->layer_a==1) ? "one" :"two";
+                cout<<"Layers   :"<<lb1 <<endl;
+                tb1=(this->top_a==1) ? "chocolate" :(this->top_a==2) ? "fresh fruits" : "crush";
+                cout<<"Toppings :"<<tb1 <<endl;
+            }
+    };
+    class event : public cake
+    {
+        protected:
+            int layer_e;
+            vector <string>top_e;
+            int no_top;
+            char item[20];
+            char msg_e[20];
+        public:
+            void getlayer_e()
+            {
+                cout<<"Enter the number of layers"<<endl;
+                std::cin>>layer_e;
+                price=price+layer_e*200;
+            }
+            void get_toppings_e()
+            {
+                cout<<"Enter the Toppings list"<<endl;
+                cout<<"You can enter 5 extra toppings "<<endl;
+                for (int i = 1; i <5; i++)
+                {
+                std::cin>>item;
+                top_e.push_back(item);
+                no_top++;
+                }
+                price=no_top*10;
+
+            }   void get_msg_e()
+            {
+                cout<<"Enter message to be displayed on cake"<<endl;
+                std::cin>>msg_e;
+            }
+            void get_coupon()
+            {
+                cout<<"You get 30% offer on your next purchase "<<endl;
+                cout<<"Your code is "<<rand()<<endl;
+                cout<<"***********************************************************************"<<endl;
+
+            }
+            void get_event()
+            {
+                price_input();
+                this->get_msg_e();
+                this->getlayer_e();
+                this->get_toppings_e();
+                this->put_output();
+            }
+            void put_output_e()
+            {
+                cout<<"*******************************BILL**********************************"<<endl;
+                cout<<"*********************************************************************"<<endl;
+                cout<<"Shape   :"<<this->shape<<endl;
+                cout<<"Weight  :"<<this->wt<<endl;
+                cout<<"Flavour :"<<this->flav<<endl;
+                cout<<"Type    :"<<this->type<<endl;
+                cout<<"Layer   :"<<this->layer_e<<endl;
+                cout<<"Price   :"<<"RS"<<price<<endl;
+            }
+    };
+    template<class t3, class t1, class t2>
+    class feedbackform : public birthday, public event, public anniversary
+    {
+        protected:
+            t3 r1,r2,r3;
+            t2 comment1;
+            t1 y_n1,y_n2;
+             public:
+            t3 rate()
+                {
+                    cout<<"*******************************FEEDBACK**********************************"<<endl;
+                    cout<<"Rate your experience in a scale of 1 to 10"<<endl;
+                    cout<<"How would you rate your experience with Bliss in bite?"<<endl;
+                    cin>>r1;
+                    cout<<"Rate the appearance of cake"<<endl;
+                    cin>>r2;
+                    cout<<"Rate the taste of cake"<<endl;
+                    cin>>r3;
+                }
+            t1 y_n()
+            {
+                cout<<"Press y for yes"<<endl;
+                cout<<"Press n for no"<<endl;
+                cout<<"Will you recommend us to your family and friends?"<<endl;
+                cin>>y_n1;
+                cout<<"Was our customer service provided to you in an accesible manner?"<<endl;
+                cin>>y_n2;
+            }
+            t2 comment()
+            {
+                cout<<"Additional comments "<<endl;
+                cin>>comment1;
+            }
+
+    };
+
+    void cake :: display()
+    {
+        cout<<"Total cakes "<<cake::totalcakes;
+    }
+    class contact_info : public cake
+    {
+        private:
+              long phn_number;
+              string adress;
+              string mail_id;
+              string date;
+              string ti;
+        public:
+         void set_contact_info(long pn,string ad,string mi,string d,string t)
+            {
+                phn_number=pn;
+                adress=ad;
+                mail_id=mi;
+                date=d;
+                ti=t;
+            }
+            void contact_inform()
+            {
+                cout<<"*****************************CUSTOMER DETAILS*****************************"<<endl;
+                cout<<"Phone number       :"<<phn_number<<endl;
+                cout<<"Address            :"<<adress<<endl;
+                cout<<"Mail Id            :"<<mail_id<<endl;
+                cout<<"Date of delivery   :"<<date<<endl;
+                cout<<"Time of delivery   :"<<ti<<endl;
+            }
+    };
+     int main()
+    {
+        int ch;cake *ca;cake *ca1; cake *ca2;
+        long pn; string ad,d,ti,mi;
+        cout<<"***********************************************************************************"<<endl;
+        cout<<"*****************WELCOME TO BLISS IN BITE ORDERING PORTAL**************************"<<endl;
+        cout<<"***********************************************************************************"<<endl;
+        ch=0;
+        while(ch!=4)
+        {
+            cout<<"Enter the kind of cake you want to order "<<endl;
+            cout<<"Enter 1 for Birthday cakes "<<endl;
+            cout<<"Enter 2 for Anniversary cakes "<<endl;
+            cout<<"Enter 3 for other custom events cakes "<<endl;
+            cout<<"Enter 4 to exit"<<endl;
+            cin>>ch;
+                if(ch==1)
+                {
+                    birthday b;
+                    cin>>b;
+                    b.get_birthday();
+                    b.put_output_b();
+                    ca=&b;
+                    ca->get_coupon();
+
+                }
+                  if(ch==2)
+                {
+                    anniversary a;
+                    cin>>a;
+                    a.get_anniversary();
+                    a.put_output_a();
+                    ca1=&a;
+                    ca1->get_coupon();
+                }
+                if(ch==3)
+                {
+                    event e;
+                    cin>>e;
+                    e.get_event();
+                    e.put_output_e();
+                    ca2=&e;
+                    ca2->get_coupon();
+                }
+                if(ch==4)
+                    _Exit;
+        }
+        cout<<"*********************************************************************"<<endl;
+        cout<<"Enter phone number"<<endl;
+        cin>>pn;
+        cout<<"Enter Address"<<endl;
+        cin>>ad;
+        cout<<"Enter Date of delivery"<<endl;
+        cin>>d;
+        cout<<"Enter Time of delivery"<<endl;
+        cin>>ti;
+        cout<<"Enter mail_id"<<endl;
+        cin>>mi;
+        contact_info customer;
+        customer.set_contact_info(pn,ad,mi,d,ti);
+        customer.contact_inform();
+        feedbackform<int, char, string> f;
+        f.rate();
+        f.y_n();
+        f.comment();
+        return 0;
+    }
